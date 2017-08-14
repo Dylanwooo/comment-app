@@ -8,7 +8,7 @@ import CommentList from './CommentList'
 
 class CommentApp extends Component{
     constructor(){
-        super()
+        super();
         this.state = {
             comments:[]
         }

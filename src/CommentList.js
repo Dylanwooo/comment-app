@@ -6,9 +6,7 @@ import React, { Component } from 'react'
 import Comment from './Comment'
 
 class CommentList extends Component{
-    static defaultProps = {
-        comments: []
-    }
+
     render(){
         return(
             <div>
@@ -19,5 +17,7 @@ class CommentList extends Component{
         )
     }
 }
-
+CommentList.defaultProps = {
+    comments: []
+};
 export default CommentList

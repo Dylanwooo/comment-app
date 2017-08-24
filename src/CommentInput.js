@@ -40,16 +40,20 @@ class CommentInput extends Component{
             content: event.target.value
         })
     }
-    handleUsernameBlur(event){
-        this._saveStorage(event.target.value);
-    }
-    handleSubmit (){
+    handleSubmit(){
         if(this.props.onSubmit){
-            const {username,content} = this.state;
-            this.props.onSubmit({username,content})
+            this.props.onSubmit({
+                username: this.state.username,
+                content: this.state.content,
+                createdTime: +new Date()
+            })
         }
         this.setState({content: ''})
     }
+    handleUsernameBlur(event){
+        this._saveStorage(event.target.value);
+    }
+
     render(){
 
         return(

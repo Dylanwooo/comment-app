@@ -13,6 +13,22 @@ class CommentApp extends Component{
             comments:[]
         }
     }
+   /*componentWillMount(){
+        this._loadComments()
+    }
+
+    _loadComments(){
+        let comments = localStorage.getItem('comments');
+        if(comments){
+            comments=JSON.parse(comments);
+            this.setState({comments})
+        }
+    }*/
+    handleDeleteComment(index){
+        const comments = this.state.comments;
+        comments.splice(index,1);
+        this.setState({comments});
+    }
     handleSubmitComment (comment) {
         if(!comment) return;
         if(!comment.username) return alert('请输入用户名');
@@ -24,11 +40,12 @@ class CommentApp extends Component{
     }
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <CommentInput
                     onSubmit={this.handleSubmitComment.bind(this)}
                 />
-                <CommentList comments={this.state.comments}/>
+                <CommentList comments={this.state.comments}
+                onDeleteComment={this.handleDeleteComment.bind(this)}/>
             </div>
         )
     }

@@ -4,8 +4,13 @@
 
 import React, { Component } from 'react'
 import Comment from './Comment'
+import {PropTypes} from 'react'
 
 class CommentList extends Component{
+    static propTypes = {
+        comments: PropTypes.array,
+        onDeleteComment: PropTypes.func
+    }
 
     handleDeleteComment(index){
         if(this.props.onDeleteComment){

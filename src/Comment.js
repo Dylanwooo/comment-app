@@ -2,11 +2,16 @@
  * Created by Dylanwoo on 2017/7/25.
  */
 import React, {Component} from 'react'
-
+import {PropTypes} from 'react'
 class Comment extends Component{
 
+    static propTypes = {
+        comment: PropTypes.object.isRequired,
+        onDeleteComment: PropTypes.func,
+        index: PropTypes.number
+    };
     constructor (){
-        super()
+        super();
         this.state = {timeString: ''}
     }
     componentWillUnmount () {

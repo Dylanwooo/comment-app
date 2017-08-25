@@ -3,10 +3,13 @@
  */
 
 import React, {Component} from 'react'
-
+import {PropTypes} from 'react'
 
 
 class CommentInput extends Component{
+    static propTypes = {
+        onSubmit: PropTypes.func
+    };
     constructor(){
         super();
         this.state={

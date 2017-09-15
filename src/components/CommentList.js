@@ -1,24 +1,24 @@
-/**
- * Created by Dylanwoo on 2017/7/25.
- */
-
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import Comment from './Comment'
-import {PropTypes} from 'react'
 
-class CommentList extends Component{
+export default class CommentList extends Component {
     static propTypes = {
         comments: PropTypes.array,
         onDeleteComment: PropTypes.func
     }
 
-    handleDeleteComment(index){
-        if(this.props.onDeleteComment){
+    static defaultProps = {
+        comments: []
+    }
+
+    handleDeleteComment (index) {
+        if (this.props.onDeleteComment) {
             this.props.onDeleteComment(index)
         }
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <div>
                 {this.props.comments.map((comment, i) =>
                     <Comment
@@ -31,7 +31,3 @@ class CommentList extends Component{
         )
     }
 }
-CommentList.defaultProps = {
-    comments: []
-};
-export default CommentList

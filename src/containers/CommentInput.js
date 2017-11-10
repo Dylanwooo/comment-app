@@ -10,10 +10,10 @@ class CommentInputContainer extends Component {
     static propTypes = {
         comments: PropTypes.array,
         onSubmit: PropTypes.func
-    }
+    };
 
     constructor () {
-        super()
+        super();
         this.state = { username: '' }
     }
 
@@ -25,7 +25,7 @@ class CommentInputContainer extends Component {
     _loadUsername () {
         // 从 LocalStorage 加载 username
         // 然后可以在 render 方法中传给 CommentInput
-        const username = localStorage.getItem('username')
+        const username = localStorage.getItem('username');
         if (username) {
             this.setState({ username })
         }
@@ -39,13 +39,13 @@ class CommentInputContainer extends Component {
 
     handleSubmitComment (comment) {
         // 评论数据的验证
-        if (!comment) return
-        if (!comment.username) return alert('请输入用户名')
-        if (!comment.content) return alert('请输入评论内容')
+        if (!comment) return;
+        if (!comment.username) return alert('请输入用户名');
+        if (!comment.content) return alert('请输入评论内容');
         // 新增评论保存到 LocalStorage 中
-        const { comments } = this.props
-        const newComments = [...comments, comment]
-        localStorage.setItem('comments', JSON.stringify(newComments))
+        const { comments } = this.props;
+        const newComments = [...comments, comment];
+        localStorage.setItem('comments', JSON.stringify(newComments));
         // this.props.onSubmit 是 connect 传进来的
         // 会 dispatch 一个 action 去新增评论
         if (this.props.onSubmit) {
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => {
     return {
         comments: state.comments
     }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -75,7 +75,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(addComment(comment))
         }
     }
-}
+};
 
 export default connect(
     mapStateToProps,

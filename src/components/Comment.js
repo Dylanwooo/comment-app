@@ -5,15 +5,15 @@ export default class Comment extends Component {
         comment: PropTypes.object.isRequired,
         onDeleteComment: PropTypes.func,
         index: PropTypes.number
-    }
+    };
 
     constructor () {
-        super()
+        super();
         this.state = { timeString: '' }
     }
 
     componentWillMount () {
-        this._updateTimeString()
+        this._updateTimeString();
         this._timer = setInterval(
             this._updateTimeString.bind(this),
             5000
@@ -25,8 +25,8 @@ export default class Comment extends Component {
     }
 
     _updateTimeString () {
-        const comment = this.props.comment
-        const duration = (+Date.now() - comment.createdTime) / 1000
+        const comment = this.props.comment;
+        const duration = (+Date.now() - comment.createdTime) / 1000;
         this.setState({
             timeString: duration > 60
                 ? `${Math.round(duration / 60)} 分钟前`
@@ -51,13 +51,13 @@ export default class Comment extends Component {
     }
 
     render () {
-        const comment = this.props.comment
+        const comment = this.props.comment;
         return (
             <div className='comment'>
                 <div className='comment-user'>
-          <span className='comment-username'>
-            {comment.username}
-          </span>：
+                  <span className='comment-username'>
+                    {comment.username}
+                  </span>：
                 </div>
                 <p dangerouslySetInnerHTML={{
                     __html: this._getProcessedContent(comment.content)
